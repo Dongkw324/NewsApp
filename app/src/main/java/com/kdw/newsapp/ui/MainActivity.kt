@@ -2,6 +2,7 @@ package com.kdw.newsapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.fragment.NavHostFragment
 import com.kdw.newsapp.R
 
 class MainActivity : AppCompatActivity() {

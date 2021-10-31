@@ -4,9 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/NewsApp/app/src/main/res/drawable/breaking_news.xml" value="0.25833333333333336" />
+        <entry key="..\:/NewsApp/app/src/main/res/drawable/save_news_btn.xml" value="0.14947916666666666" />
         <entry key="..\:/NewsApp/app/src/main/res/drawable/saving_news.xml" value="0.25833333333333336" />
+        <entry key="..\:/NewsApp/app/src/main/res/drawable/search_background.xml" value="0.1" />
+        <entry key="..\:/NewsApp/app/src/main/res/drawable/search_key_word.xml" value="0.14947916666666666" />
         <entry key="..\:/NewsApp/app/src/main/res/drawable/searching_news.xml" value="0.25833333333333336" />
-        <entry key="..\:/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/NewsApp/app/src/main/res/layout/fragment_article.xml" value="0.128" />
+        <entry key="..\:/NewsApp/app/src/main/res/layout/fragment_detail_article.xml" value="0.2" />
+        <entry key="..\:/NewsApp/app/src/main/res/layout/fragment_detail_news.xml" value="0.1" />
+        <entry key="..\:/NewsApp/app/src/main/res/layout/fragment_saved_article.xml" value="0.13333333333333333" />
+        <entry key="..\:/NewsApp/app/src/main/res/layout/fragment_saved_news.xml" value="0.1" />
+        <entry key="..\:/NewsApp/app/src/main/res/layout/fragment_search_article.xml" value="0.176" />
+        <entry key="..\:/NewsApp/app/src/main/res/layout/fragment_search_news.xml" value="0.1" />
         <entry key="..\:/NewsApp/app/src/main/res/menu/bottom_naviation_menu.xml" value="0.4" />
       </map>
     </option>
