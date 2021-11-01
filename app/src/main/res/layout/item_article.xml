@@ -55,11 +55,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/articlePublished"
         android:layout_marginTop="10dp" />
-
-
-
-
-
-
-
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
