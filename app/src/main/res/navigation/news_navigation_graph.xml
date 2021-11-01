@@ -14,10 +14,36 @@
     </fragment>
 
     <fragment
+        android:id="@+id/searchArticleFragment"
+        android:name="com.kdw.newsapp.ui.fragment.SearchArticleFragment"
+        android:label="SearchArticleFragment">
+
+        <action
+            android:id="@+id/action_searchArticleFragment"
+            app:destination="@id/detailArticleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/savedArticleFragment"
+        android:name="com.kdw.newsapp.ui.fragment.SavedArticleFragment"
+        android:label="SearchArticleFragment">
+
+        <action
+            android:id="@+id/action_savedArticleFragment"
+            app:destination="@id/detailArticleFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/detailArticleFragment"
         android:name="com.kdw.newsapp.ui.fragment.DetailArticleFragment"
         android:label="DetailedFragment">
 
+        <action
+            android:id="@+id/action_detailArticleFragment"
+            app:argType="com.kdw.newsapp.model.Article" />
+
     </fragment>
+
+
 
 </navigation>
