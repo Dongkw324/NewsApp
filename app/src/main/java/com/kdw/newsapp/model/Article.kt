@@ -1,8 +1,10 @@
 package com.kdw.newsapp.model
 
 
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "articleTable")
 data class Article(
     val author: String,
     val content: Any,
