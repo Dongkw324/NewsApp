@@ -6,4 +6,10 @@
     <string name="search_news">뉴스 검색</string>
 
     <string name="key_word">검색어를 입력하세요</string>
+
+    <string name="article_title">제목</string>
+    <string name="article_description">내용</string>
+    <string name="article_source">소스</string>
+    <string name="article_published_at">출판 날짜</string>
+
 </resources>
