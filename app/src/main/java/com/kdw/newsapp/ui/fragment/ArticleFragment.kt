@@ -5,6 +5,4 @@ import com.kdw.newsapp.R
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
 
-
-
 }
