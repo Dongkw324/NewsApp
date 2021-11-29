@@ -17,10 +17,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ArticleFragment : Fragment(R.layout.fragment_article) {
 
-    lateinit var articleAdapter: ArticleAdapter
-    private val viewModel: ArticleViewModel by viewModels()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    private var _binding: FragmentArticleBinding? = null
-    private val binding get() = _binding!!
-
+        val binding = FragmentArticleBinding.bind(view)
+    }
 }

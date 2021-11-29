@@ -26,12 +26,12 @@ class ArticleViewModel @ViewModelScoped constructor(
 
     fun getBreakingNews() = viewModelScope.launch {
         val remoteArticles = remoteRepository.getBreakingArticles()
-        _articleData.postValue(remoteArticles)
+        _articleData.postValue(remoteArticles!!)
     }
 
     fun getSearchingNews(query: String) = viewModelScope.launch {
         val searchingArticles = remoteRepository.getSearchingArticles(query)
-        _searchedArticleData.postValue(searchingArticles)
+        _searchedArticleData.postValue(searchingArticles!!)
     }
 
     fun savedNews(article: Article) = viewModelScope.launch {
