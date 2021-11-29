@@ -14,7 +14,7 @@ import com.kdw.newsapp.databinding.ItemArticleBinding
 import com.kdw.newsapp.model.Article
 import com.kdw.newsapp.ui.fragment.ArticleFragmentDirections
 
-class ArticleAdapter(val context: Context): RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
+class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
     inner class ArticleViewHolder(val binding: ItemArticleBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -48,21 +48,18 @@ class ArticleAdapter(val context: Context): RecyclerView.Adapter<ArticleAdapter.
     override fun onBindViewHolder(holder: ArticleAdapter.ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
         holder.binding.apply {
-            holder.binding.apply {
-                article?.let {
-                    Glide.with(context).load(it.urlToImage).into(articleImage)
-                    articleTitle.text = it.title
-                    articleDescription.text = it.description
-                    articlePublished.text = it.publishedAt
-                    articleSource.text = it.source?.name
-                }
+            article?.let {
+                Glide.with(root).load(it.urlToImage).into(articleImage)
+                articleTitle.text = it.title
+                articleSource.text = it.source?.name
+                articleDescription.text = it.description
+                articlePublished.text = it.publishedAt
 
-                setOnItemClickListener {
+                root.setOnClickListener {
                     onItemClickListener?.let {
                         it(article)
                     }
                 }
-
             }
         }
     }
