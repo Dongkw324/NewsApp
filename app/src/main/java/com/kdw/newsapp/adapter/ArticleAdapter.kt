@@ -49,7 +49,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
         val article = differ.currentList[position]
         holder.binding.apply {
             article?.let {
-                Glide.with(root).load(it.urlToImage).into(articleImage)
+                Glide.with(root.context).load(it.urlToImage).into(articleImage)
                 articleTitle.text = it.title
                 articleSource.text = it.source?.name
                 articleDescription.text = it.description
