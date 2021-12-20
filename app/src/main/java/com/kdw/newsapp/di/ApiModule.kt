@@ -22,35 +22,24 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ApiModule {
 
-    @Singleton
+
     @Provides
     fun provideGson(): Gson = GsonBuilder().setLenient().create()
 
-    @Singleton
     @Provides
-    fun provideRetrofit(gson: Gson): Retrofit = Retrofit.Builder()
-        .baseUrl(Constant.baseUrl)
-        .client(OkHttpClient.Builder().also { client ->
-            if(BuildConfig.DEBUG) {
-                val logging = HttpLoggingInterceptor()
-                logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-                client.addInterceptor(logging)
-                client.connectTimeout(120, TimeUnit.SECONDS)
-                client.readTimeout(120, TimeUnit.SECONDS)
-                client.protocols(Collections.singletonList(Protocol.HTTP_1_1))
-            }
-        }.build()
-        )
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .build()
+    @Singleton
+    fun provideRetrofit(gson: Gson) : Retrofit.Builder {
+        return Retrofit.Builder()
+            .baseUrl(Constant.baseUrl)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+    }
 
 
-    @Singleton
     @Provides
-    fun provideApi(retrofit: Retrofit.Builder) : NewsApi {
-        return retrofit
+    @Singleton
+    fun provideApi(retrofit: Retrofit.Builder) : NewsApi = retrofit
             .build()
             .create(NewsApi::class.java)
 
-    }
+
 }

@@ -6,10 +6,13 @@ import androidx.lifecycle.viewModelScope
 import com.kdw.newsapp.model.Article
 import com.kdw.newsapp.repository.LocalRepository
 import com.kdw.newsapp.repository.RemoteRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ArticleViewModel @ViewModelScoped constructor(
+@HiltViewModel
+class ArticleViewModel @Inject constructor(
     private val localRepository: LocalRepository,
     private val remoteRepository: RemoteRepository
 ): ViewModel() {

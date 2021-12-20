@@ -1,9 +1,7 @@
 package com.kdw.newsapp.adapter
 
-import android.content.Context
-import android.text.Layout
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -12,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.kdw.newsapp.R
 import com.kdw.newsapp.databinding.ItemArticleBinding
 import com.kdw.newsapp.model.Article
-import com.kdw.newsapp.ui.fragment.ArticleFragmentDirections
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
@@ -49,7 +46,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
         val article = differ.currentList[position]
         holder.binding.apply {
             article?.let {
-                Glide.with(root.context).load(it.urlToImage).into(articleImage)
+                Glide.with(root).load(it.urlToImage).into(articleImage)
                 articleTitle.text = it.title
                 articleSource.text = it.source?.name
                 articleDescription.text = it.description
