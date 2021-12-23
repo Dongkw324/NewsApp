@@ -6,14 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.kdw.newsapp.R
 import com.kdw.newsapp.adapter.ArticleAdapter
-import com.kdw.newsapp.databinding.ActivityMainBinding
 import com.kdw.newsapp.databinding.FragmentArticleBinding
 import com.kdw.newsapp.viewModel.ArticleViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +28,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentArticleBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -51,8 +48,21 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
             })
         }
 
+        seeNews()
         refreshLayout()
+    }
 
+    private fun seeNews() {
+        articleAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+
+            findNavController().navigate(
+                R.id.action_articleFragment,
+                bundle
+            )
+        }
     }
 
     private fun refreshLayout() {
