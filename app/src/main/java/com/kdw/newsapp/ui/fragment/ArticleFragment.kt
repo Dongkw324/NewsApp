@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.kdw.newsapp.R
 import com.kdw.newsapp.adapter.ArticleAdapter
 import com.kdw.newsapp.databinding.ActivityMainBinding
@@ -50,6 +51,16 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
             })
         }
 
+        refreshLayout()
+
+    }
+
+    private fun refreshLayout() {
+        binding.swiperLayout.setOnRefreshListener {
+            articleViewModel.getBreakingNews()
+            Snackbar.make(binding.root, "새로고침 완료", Snackbar.LENGTH_LONG).show()
+            binding.swiperLayout.isRefreshing = false
+        }
     }
 
     override fun onDestroyView() {
