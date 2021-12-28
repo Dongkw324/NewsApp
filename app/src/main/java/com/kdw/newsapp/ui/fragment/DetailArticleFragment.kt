@@ -8,6 +8,7 @@ import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.kdw.newsapp.R
 import com.kdw.newsapp.databinding.FragmentDetailArticleBinding
 import com.kdw.newsapp.viewModel.ArticleViewModel
@@ -33,6 +34,12 @@ class DetailArticleFragment: Fragment(R.layout.fragment_detail_article) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        showNews()
+    }
+
+    private fun showNews() {
+
         val articleView = args.article
 
         detailBinding.articleWebView.apply {
@@ -42,8 +49,12 @@ class DetailArticleFragment: Fragment(R.layout.fragment_detail_article) {
             }
         }
 
+        detailBinding.saveArticleBtn.setOnClickListener {
+            detailViewModel.savedNews(articleView)
+            Snackbar.make(detailBinding.root, "뉴스 저장 완료", Snackbar.LENGTH_LONG).show()
+        }
     }
-
+    
     override fun onDestroyView() {
         _detailBinding = null
         super.onDestroyView()
