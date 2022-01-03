@@ -54,7 +54,7 @@ class DetailArticleFragment: Fragment(R.layout.fragment_detail_article) {
             Snackbar.make(detailBinding.root, "뉴스 저장 완료", Snackbar.LENGTH_LONG).show()
         }
     }
-    
+
     override fun onDestroyView() {
         _detailBinding = null
         super.onDestroyView()
