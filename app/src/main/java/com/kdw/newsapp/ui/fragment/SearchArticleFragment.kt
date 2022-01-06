@@ -5,8 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kdw.newsapp.R
+import com.kdw.newsapp.adapter.ArticleAdapter
 import com.kdw.newsapp.databinding.FragmentSearchArticleBinding
+import com.kdw.newsapp.viewModel.ArticleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,6 +19,9 @@ class SearchArticleFragment: Fragment(R.layout.fragment_search_article) {
 
     private var _searchBinding : FragmentSearchArticleBinding? = null
     private val searchBinding = _searchBinding!!
+
+    private lateinit var searchArticleAdapter: ArticleAdapter
+    private val articleViewModel: ArticleViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,11 +31,35 @@ class SearchArticleFragment: Fragment(R.layout.fragment_search_article) {
         _searchBinding = FragmentSearchArticleBinding.inflate(inflater, container, false)
         return searchBinding.root
     }
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        searchArticleAdapter = ArticleAdapter()
 
+        searchBinding.searchArticleRecyclerview.apply {
+            adapter = searchArticleAdapter
+            layoutManager = LinearLayoutManager(activity)
+        }
+
+        articleViewModel.searchedArticleLiveData.observe(viewLifecycleOwner, {
+            searchArticleAdapter.differ.submitList(it)
+        })
+
+        seeSearchedNews()
+    }
+
+    private fun seeSearchedNews() {
+        searchArticleAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+
+            findNavController().navigate(
+                R.id.action_searchArticleFragment,
+                bundle
+            )
+        }
     }
 
     override fun onDestroyView() {
