@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,15 +14,23 @@ import com.kdw.newsapp.adapter.ArticleAdapter
 import com.kdw.newsapp.databinding.FragmentSearchArticleBinding
 import com.kdw.newsapp.viewModel.ArticleViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchArticleFragment: Fragment(R.layout.fragment_search_article) {
 
+
     private var _searchBinding : FragmentSearchArticleBinding? = null
-    private val searchBinding = _searchBinding!!
+    private val searchBinding get() = _searchBinding!!
 
     private lateinit var searchArticleAdapter: ArticleAdapter
     private val articleViewModel: ArticleViewModel by viewModels()
+
+    private var job: Job? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +46,8 @@ class SearchArticleFragment: Fragment(R.layout.fragment_search_article) {
 
         searchArticleAdapter = ArticleAdapter()
 
+        searchNews()
+
         searchBinding.searchArticleRecyclerview.apply {
             adapter = searchArticleAdapter
             layoutManager = LinearLayoutManager(activity)
@@ -47,6 +58,20 @@ class SearchArticleFragment: Fragment(R.layout.fragment_search_article) {
         })
 
         seeSearchedNews()
+    }
+
+    private fun searchNews() {
+        searchBinding.searchingKeyWord.addTextChangedListener { edit ->
+            job?.cancel()
+            job = MainScope().launch {
+                delay(500L)
+                edit?.let {
+                    if(edit.toString().isNotEmpty()) {
+                        articleViewModel.getSearchingNews(edit.toString())
+                    }
+                }
+            }
+        }
     }
 
     private fun seeSearchedNews() {
@@ -66,4 +91,6 @@ class SearchArticleFragment: Fragment(R.layout.fragment_search_article) {
         _searchBinding = null
         super.onDestroyView()
     }
+
+
 }
