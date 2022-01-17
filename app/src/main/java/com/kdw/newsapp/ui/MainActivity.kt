@@ -3,6 +3,7 @@ package com.kdw.newsapp.ui
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -10,6 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kdw.newsapp.R
 import com.kdw.newsapp.databinding.ActivityMainBinding
+import com.kdw.newsapp.util.NetworkCheck
 import com.kdw.newsapp.util.StatusTransport
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,6 +34,10 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         bottomMenu.setupWithNavController(navController)
+
+        if(NetworkCheck.isNetworkConnected(this)) {
+            Toast.makeText(this, "네트워크 연결을 확인하세요", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
