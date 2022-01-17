@@ -1,5 +1,7 @@
 package com.kdw.newsapp.ui.fragment
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.media.browse.MediaBrowser
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -59,8 +61,22 @@ class SavedArticleFragment: Fragment(R.layout.fragment_saved_article) {
                 val article = savedArticleAdapter.differ.currentList[position]
                 articleViewModel.deletedNews(article)
 
-                Snackbar.make(savingBinding.root, "뉴스 삭제 완료", Snackbar.LENGTH_LONG)
-                    .show()
+                val builder = AlertDialog.Builder(activity)
+                    .setTitle("뉴스 삭제")
+                    .setMessage("뉴스를 삭제하시겠습니까?")
+                    .setPositiveButton("예",
+                        { dialog, which ->
+                            articleViewModel.deletedNews(article)
+                        })
+                    .setNegativeButton("아니요",
+                        {   dialog, which ->
+                        articleViewModel.savedNews(article)
+                        })
+
+                builder.show()
+
+                //Snackbar.make(savingBinding.root, "뉴스 삭제 완료", Snackbar.LENGTH_LONG)
+                  //  .show()
             }
         }
 
