@@ -9,4 +9,15 @@
 ### 기술 스택
 
 **Kotlin**</br>
-**MVVM**</br>
+**MVVM (model-view-viewModel)**</br>
+**Dagger-hilt**</br>
+**Retrofit2**</br>
+**Room**</br>
+**ViewBinding**</br>
+**Coroutine**</br>
+
+***
+### 뉴스 API
+
+[News Api](https://newsapi.org/)에 접속하여 개인 API Key를 발급받을 수 있다.
+
