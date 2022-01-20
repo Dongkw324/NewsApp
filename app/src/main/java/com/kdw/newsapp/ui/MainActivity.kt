@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomMenu.setupWithNavController(navController)
 
-        if(NetworkCheck.isNetworkConnected(this)) {
+        if(!NetworkCheck.isNetworkConnected(this)) {
             Toast.makeText(this, "네트워크 연결을 확인하세요", Toast.LENGTH_SHORT).show()
         }
     }
