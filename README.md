@@ -21,3 +21,7 @@
 
 [News Api](https://newsapi.org/)에 접속하여 개인 API Key를 발급받을 수 있다.
 
+
+***
+### 화면
+
