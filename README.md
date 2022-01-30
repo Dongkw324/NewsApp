@@ -27,4 +27,4 @@
 
 <img src="https://user-images.githubusercontent.com/59963677/151697213-e34a84c3-47c0-462c-a168-1b4bae0063f1.png" width=300 height=600 />
 
-<img src="https://user-images.githubusercontent.com/59963677/151697215-fcb58f2f-3623-4ab1-af2b-2620d8c11e2d.png width=300 height=600 />
+<img src="https://user-images.githubusercontent.com/59963677/151697215-fcb58f2f-3623-4ab1-af2b-2620d8c11e2d.png" width=300 height=600 />
