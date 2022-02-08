@@ -9,7 +9,6 @@
 ### 기술 스택
 
 **Kotlin**</br>
-**MVVM (model-view-viewModel)**</br>
 **Dagger-hilt**</br>
 **Retrofit2**</br>
 **Room**</br>
@@ -31,3 +30,7 @@
   <img src="https://user-images.githubusercontent.com/59963677/152670204-c6ad695c-3d2d-42af-b1e8-acbb5f75a364.png" width=200 />
   <img src="https://user-images.githubusercontent.com/59963677/152670205-697b7880-349c-4263-9942-083bad982717.png" width=200 />
 </p>
+
+***
+### 어플 구조
+
