@@ -34,3 +34,6 @@
 ***
 ### 어플 구조
 
+**MVVM** 구조 사용
+<img src="https://user-images.githubusercontent.com/59963677/152993147-910212e9-2f4b-44fa-9d03-7e4497601b63.png" />
+
